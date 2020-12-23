@@ -1,0 +1,70 @@
+esphome:
+  name: esplanone
+  platform: ESP32
+  board: esp-wrover-kit
+
+# wifi:
+#  ssid: ""
+#  password: ""
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+#  ap:
+#    ssid: "Esplanone Fallback Hotspot"
+#    password: "G9iQEfX87bfa"
+
+# captive_portal:
+
+# Enable logging
+logger:
+
+web_server:
+  port: 80
+# esp32MX-e pins
+ethernet:
+  type: LAN8720
+  mdc_pin: GPIO23
+  mdio_pin: GPIO18
+  clk_mode: GPIO0_OUT
+  phy_addr: 0
+# Enable Home Assistant API
+api:
+
+ota:
+
+i2c:
+  sda: 17
+  scl: 16
+  scan: True
+  id: bus_b
+
+
+esp32_ble_tracker:
+
+mcp23017:
+  - id: 'mcp23017_hub'
+    address: 0x20
+    
+binary_sensor:
+  - platform: gpio
+    pin:
+      number: GPIO34
+      mode: INPUT_PULLUP
+    name: "Test 1"
+    device_class: window
+    
+  - platform: gpio
+    pin:
+      number: GPIO39
+      mode: INPUT_PULLUP
+    name: "Test 2"
+    device_class: window
+    
+  - platform: gpio
+    name: "MCP23017 Pin #1"
+    pin:
+      mcp23017: mcp23017_hub
+      number: 1
+      # One of INPUT or INPUT_PULLUP
+      mode: INPUT_PULLUP
+      inverted: False
+ 
