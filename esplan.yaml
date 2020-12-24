@@ -1,0 +1,174 @@
+esphome:
+  name: esplanone
+  platform: ESP32
+  board: esp-wrover-kit
+
+
+
+# Uses ESP32MX-E with I2C connected to pins 16&17 to create 16 extra I/O's
+
+# captive_portal:
+
+# Enable logging
+logger:
+
+web_server:
+  port: 80
+# esp32MX-e pins
+ethernet:
+  type: LAN8720
+  mdc_pin: GPIO23
+  mdio_pin: GPIO18
+  clk_mode: GPIO0_OUT
+  phy_addr: 0
+# Enable Home Assistant API
+api:
+
+ota:
+
+i2c:
+  sda: 17
+  scl: 16
+  scan: True
+  id: bus_b
+
+
+mcp23017:
+  - id: 'mcp23017_hub'
+    address: 0x20
+
+
+binary_sensor:
+# Port 2
+  - platform: gpio
+    name: "MCP23017 Pin #1"
+    pin:
+      mcp23017: mcp23017_hub
+      number: 0
+      # One of INPUT or INPUT_PULLUP
+      mode: INPUT_PULLUP
+      inverted: False
+  - platform: gpio
+    name: "MCP23017 Pin #2"
+    pin:
+      mcp23017: mcp23017_hub
+      number: 1
+      # One of INPUT or INPUT_PULLUP
+      mode: INPUT_PULLUP
+      inverted: False
+  - platform: gpio
+    name: "MCP23017 Pin #3"
+    pin:
+      mcp23017: mcp23017_hub
+      number: 2
+      # One of INPUT or INPUT_PULLUP
+      mode: INPUT_PULLUP
+      inverted: False
+  - platform: gpio
+    name: "MCP23017 Pin #4"
+    pin:
+      mcp23017: mcp23017_hub
+      number: 3
+      # One of INPUT or INPUT_PULLUP
+      mode: INPUT_PULLUP
+      inverted: False
+ # Port 1
+  - platform: gpio
+    name: "MCP23017 Pin #5"
+    pin:
+      mcp23017: mcp23017_hub
+      number: 4
+      # One of INPUT or INPUT_PULLUP
+      mode: INPUT_PULLUP
+      inverted: False
+  - platform: gpio
+    name: "MCP23017 Pin #6"
+    pin:
+      mcp23017: mcp23017_hub
+      number: 5
+      # One of INPUT or INPUT_PULLUP
+      mode: INPUT_PULLUP
+      inverted: False
+  - platform: gpio
+    name: "MCP23017 Pin #7"
+    pin:
+      mcp23017: mcp23017_hub
+      number: 6
+      # One of INPUT or INPUT_PULLUP
+      mode: INPUT_PULLUP
+      inverted: False
+  - platform: gpio
+    name: "MCP23017 Pin #8"
+    pin:
+      mcp23017: mcp23017_hub
+      number: 7
+      # One of INPUT or INPUT_PULLUP
+      mode: INPUT_PULLUP
+      inverted: False
+# Port 4
+  - platform: gpio
+    name: "MCP23017 Pin #9"
+    pin:
+      mcp23017: mcp23017_hub
+      number: 8
+      # One of INPUT or INPUT_PULLUP
+      mode: INPUT_PULLUP
+      inverted: False
+  - platform: gpio
+    name: "MCP23017 Pin #10"
+    pin:
+      mcp23017: mcp23017_hub
+      number: 9
+      # One of INPUT or INPUT_PULLUP
+      mode: INPUT_PULLUP
+      inverted: False
+  - platform: gpio
+    name: "MCP23017 Pin #11"
+    pin:
+      mcp23017: mcp23017_hub
+      number: 10
+      # One of INPUT or INPUT_PULLUP
+      mode: INPUT_PULLUP
+      inverted: False
+  - platform: gpio
+    name: "MCP23017 Pin #12"
+    pin:
+      mcp23017: mcp23017_hub
+      number: 11
+      # One of INPUT or INPUT_PULLUP
+      mode: INPUT_PULLUP
+      inverted: False
+ # Port 5
+  - platform: gpio
+    name: "MCP23017 Pin #13"
+    pin:
+      mcp23017: mcp23017_hub
+      number: 12
+      # One of INPUT or INPUT_PULLUP
+      mode: INPUT_PULLUP
+      inverted: False
+  - platform: gpio
+    name: "MCP23017 Pin #14"
+    pin:
+      mcp23017: mcp23017_hub
+      number: 13
+      # One of INPUT or INPUT_PULLUP
+      mode: INPUT_PULLUP
+      inverted: False
+  - platform: gpio
+    name: "MCP23017 Pin #15"
+    pin:
+      mcp23017: mcp23017_hub
+      number: 14
+      # One of INPUT or INPUT_PULLUP
+      mode: INPUT_PULLUP
+      inverted: False
+  - platform: gpio
+    name: "MCP23017 Pin #16"
+    pin:
+      mcp23017: mcp23017_hub
+      number: 15
+      # One of INPUT or INPUT_PULLUP
+      mode: INPUT_PULLUP
+      inverted: False
+ 
